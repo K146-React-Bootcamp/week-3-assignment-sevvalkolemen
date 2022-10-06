@@ -1,1 +1,19 @@
-bu dosya içerisinde ödevi yapabilirsiniz.
+Custom Event Neden Kullanılır:
+Bazen geliştirdiğimiz algoritmada çalıştırılmak istenen kodları karşılayacak bir event bulunmaz işte o zaman custom event'ları kullanırız.
+Halihazırda bulunan event'ları kullanmak yerine kendimiz oluşturmak istiyorsak da custom event'larını kullanabiliriz.
+
+Yeni bir custom event oluşturmak için aşağıdaki adımlar izlenir:
+1. Event constructor'ını kullanarak bir olay oluşturulur.
+2. addEventListener() metodu ile bu olayı dinleriz.
+3. Element.dispatchEvent(eventName) yöntemini kullanarak olayı tetikler veya göndeririz.
+
+// event atamak için
+const startEvent = new CustomEvent("start");
+
+// event dinleyicisini tetiklemek için
+document.addEventListener("start", () => {
+    console.log("The start event was triggered")
+});
+
+// event'i tetiklemek için
+document.dispatchEvent(startEvent);

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Tarayıcıda gösterilen h2 tağinin içinde yazan değeri console'dan girdiğimiz ve kendi yazdığımız custom event metodu 
+    olan changeNumber("num","color") değerine göre değiştiren kod. -->
+    <h2 id="number">0</h2>
+
+    <script type="text/javascript">
+        // id'si number olan eleman seçildi.
+        const headerTag = document.getElementById("number");
+
+        //addEventListener methodu ile dinlemek istediğimiz olayı numberChanged olarak tanımladık.
+        headerTag.addEventListener("numberChanged" , (e) => {
+            headerTag.textContent = e.detail.number;
+            headerTag.style.color = e.detail.textColor;
+        });
+        
+        // changeNumber methodunun içinde custom event oluşturduk. Değişmesini istediğimiz değerleri parametre olarak geçtik.
+        const changeNumber = (num, color) => {
+            const event = new CustomEvent("numberChanged" , {
+                detail: {
+                    number : num,
+                    textColor: color
+                }
+            });
+            // dispatchEvent() ile olayı tetikledik.
+            headerTag.dispatchEvent(event);
+        }
+    </script>
+</body>
+</html>
