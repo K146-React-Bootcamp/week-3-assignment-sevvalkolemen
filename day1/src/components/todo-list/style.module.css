@@ -4,3 +4,6 @@
 .actionButton {
   margin-right: 5px;
 }
+.click{
+  cursor: pointer;
+}
